@@ -1,0 +1,30 @@
+<h1>Hello World from Angular</h1>
+<div><span>Controller says: {{vm.message}}</span></div>
+
+
+<a ui-sref="About">About</a>
+
+
+<div ng-hide="!vm.showit" class="cssSlideUp">
+    <span>yo yo yo</span>
+    <button class='btn btn-warning' ng-click='vm.addElement()'>Add One</button>
+</div>
+
+<button class='btn btn-success' ng-click="vm.showit = !vm.showit">Show It!</button>
+
+<button class='btn btn-primary' ng-click='vm.setProps()'>Set Props</button>
+<div class='fluid-container'>
+    <div class='row'>
+        <div class='col-xs-12' style='height:600px'>
+            <gs-diagram grid-width='20' grid-height='20' show-grid='true'>
+                <gs-node ng-repeat='node in vm.nodes' type='{{node.type}}' key='{{node.key}}' props='node.props'></gs-node>
+            </gs-diagram>
+        </div>
+    </div>
+</div>
+
+<!--
+    <gs-node type='filter' key='2' props='vm.filterProps'></gs-node>
+    <gs-node type='mixer' key='5'></gs-node>
+    <gs-node type='oscillator' name='OSC1' key='7' props='vm.filterProps'></gs-node>
+-->
