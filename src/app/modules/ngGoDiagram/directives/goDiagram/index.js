@@ -1,7 +1,4 @@
-'use strict';
- 
-function GoDiagram($window, goJsTemplate, viewUrl, goJs) {
-    
+const ngGoDiagramDirective = function ($window, goJsTemplate, viewUrl, goJs) {
     return {
         restrict: 'E',
         scope: {
@@ -13,16 +10,14 @@ function GoDiagram($window, goJsTemplate, viewUrl, goJs) {
             options: '='
         },
         transclude: true,
-        templateUrl: viewUrl('/partial/template/gsDiagram/index.html'),
+        template: require('../views/goDiagram'),
         replace: true,
         controller: 'GoDiagramController',
         link: function(scope, elem, attrs, ctrl) {
             console.log('goDiagram - link');
         }
-    };
-}
+    };       
+};
 
-// love our dependency injection and we are now safe from obfuscation
-GoDiagram.$inject = ['$window', 'goJsTemplate', 'viewUrl', 'goJs'];
-
-module.exports = GoDiagram;
+ngGoDiagramDirective.$inject = ['$window', 'goJsTemplate', 'viewUrl', 'goJs'];
+module.exports = ngGoDiagramDirective;
