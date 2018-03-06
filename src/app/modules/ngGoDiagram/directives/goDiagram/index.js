@@ -1,4 +1,5 @@
-const ngGoDiagramDirective = function ($window, goJsTemplate, viewUrl, goJs) {
+
+const ngGoDiagramDirective = function ($window, goJsTemplate) {
     return {
         restrict: 'E',
         scope: {
@@ -19,5 +20,5 @@ const ngGoDiagramDirective = function ($window, goJsTemplate, viewUrl, goJs) {
     };       
 };
 
-ngGoDiagramDirective.$inject = ['$window', 'goJsTemplate', 'viewUrl', 'goJs'];
+ngGoDiagramDirective.$inject = ['$window', 'goJsTemplate'];
 module.exports = ngGoDiagramDirective;

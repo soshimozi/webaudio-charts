@@ -17,9 +17,9 @@
         <div class='fluid-container'>
             <div class='row'>
                 <div class='col-xs-12' style='height:600px'>
-                    <go-diagram grid-width='20' grid-height='20' show-grid='true'>
-                        <go-node ng-repeat='node in vm.nodes' type='{{node.type}}' key='{{node.key}}' props='node.props'></go-node>
-                    </go-diagram>
+                    <ng-audio-diagram grid-width='20' grid-height='20' show-grid='true'>
+                        <ng-audio-node ng-repeat='node in vm.nodes' type='{{node.type}}' key='{{node.key}}' props='node.props'></ng-audio-node>
+                    </ng-audio-diagram>
                 </div>
             </div>
         </div>

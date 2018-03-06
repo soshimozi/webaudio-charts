@@ -3,13 +3,14 @@
 
 const angular = require('angular');
 
+const goJs = require('gojs');
+
 export default class {
     
-    constructor($scope, $element, $attrs, goJs, goJsTemplate) {
+    constructor($scope, $element, $attrs, goJsTemplate) {
         
         this.$scope = $scope;
-        this.goJs = goJs;
-        
+
         var colors = {
             "red": "#aa3939",
             "brown": "#aa6c39",
@@ -94,7 +95,7 @@ export default class {
         
         $scope.diagram.addDiagramListener("ChangedSelection", (e) => {
             var selnode = this.$scope.diagram.selection.first();
-            this.$scope.diagram.model.selectedNodeData = (selnode instanceof this.goJs.Node ? selnode.data : null);
+            this.$scope.diagram.model.selectedNodeData = (selnode instanceof goJs.Node ? selnode.data : null);
         });
             
         $scope.$watch('options', () => {
@@ -133,19 +134,19 @@ export default class {
     
     handleChangeRequest() {
         console.log('change handled');
-    };
+    }
     
-    addNode(scp) {
-        this.$scope.diagram.model.addNodeData(scp.node);
-        this.nodes[scp.key] = scp;
-    };
+    addNode(node) {
+        this.$scope.diagram.model.addNodeData(node);
+        this.nodes[node.key] = node;
+    }
     
     addLink(link) {
         //$scope.diagram.model.linkDataArray.push(link);
-    };
+    }
     
     updateNodeProperty(nodeKey, propertyName, value) {
         // find node by key in array
         // then call $scope.diagram.model.setDataProperty(node, propertyName, value);
-    };        
+    }       
 }

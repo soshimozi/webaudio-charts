@@ -1,8 +1,8 @@
 const angular = require('angular');
 
-const ngGoNodeDirective = function ($window, goJs) {
+const ngGoNodeDirective = function ($window) {
     return {
-        require:'^goDiagram',
+        require:'^ngAudioDiagram',
         scope: {
             type: '@',
             parameters: '=props',
@@ -31,5 +31,5 @@ const ngGoNodeDirective = function ($window, goJs) {
     };     
 };
 
-ngGoNodeDirective.$inject = ['$window', 'goJs'];
+ngGoNodeDirective.$inject = ['$window'];
 module.exports = ngGoNodeDirective;
