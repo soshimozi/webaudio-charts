@@ -10,7 +10,7 @@ const ngGoDiagramDirective = function ($window, goJsTemplate, viewUrl, goJs) {
             options: '='
         },
         transclude: true,
-        template: require('../views/goDiagram'),
+        template: require('../../views/goDiagram'),
         replace: true,
         controller: 'GoDiagramController',
         link: function(scope, elem, attrs, ctrl) {

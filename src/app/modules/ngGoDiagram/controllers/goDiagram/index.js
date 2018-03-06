@@ -1,6 +1,8 @@
 //TODO: create seperate directives for each node type
 // move template into node type and do away with goJsTemplate
 
+const angular = require('angular');
+
 export default class {
     
     constructor($scope, $element, $attrs, goJs, goJsTemplate) {
@@ -57,19 +59,19 @@ export default class {
                 });  
                 
         // add templates for various child controls
-        $scope.diagram.nodeTemplateMap.add("oscillator", goJsTemplate.getOscillatorTemplate(colors.red, colors.gray, controller.handleChangeRequest));
+        $scope.diagram.nodeTemplateMap.add("oscillator", goJsTemplate.getOscillatorTemplate(colors.red, colors.gray, this.handleChangeRequest));
         
         $scope.diagram.nodeTemplateMap.add("filter", goJsTemplate.getParameterTemplate("Filter", "", colors.brown, colors.gray,
                      [goJsTemplate.getPort("RES", true), goJsTemplate.getPort("CUTOFF", true), goJsTemplate.getPort("IN", true)],
-                     [goJsTemplate.getPort("OUT", false)], controller.handleChangeRequest));
+                     [goJsTemplate.getPort("OUT", false)], this.handleChangeRequest));
     
         $scope.diagram.nodeTemplateMap.add("mixer", goJsTemplate.getParameterTemplate("Mixer", "", colors.blue, colors.gray,
                      [goJsTemplate.getPort("INA", true), goJsTemplate.getPort("INB", true)],
-                     [goJsTemplate.getPort("OUT", false)], controller.handleChangeRequest));
+                     [goJsTemplate.getPort("OUT", false)], this.handleChangeRequest));
                      
         $scope.diagram.nodeTemplateMap.add("OUTPUT", goJsTemplate.getParameterTemplate("OUTPUT", "build/images/volume-high.png", colors.blue, colors.gray,
                              [goJsTemplate.getPort("IN", true)],
-                             [], controller.handleChangeRequest, true));
+                             [], this.handleChangeRequest, true));
                 
             
         // TODO: either supply this via a service to the directive (complete with a watch to replace)

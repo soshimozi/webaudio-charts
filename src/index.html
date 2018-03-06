@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html ng-app="angular-application">
+<html ng-app="webaudio-charts-app">
     <head>
         <script src="/bundle.js" type="text/javascript"></script>
         <base href="/">
     </head>
-    <body ng-controller="MainController">
+    <body ng-controller="MainController as vm">
         
         <div ng-hide="!vm.showit" class="cssSlideUp">
             <span>yo yo yo</span>
@@ -17,9 +17,9 @@
         <div class='fluid-container'>
             <div class='row'>
                 <div class='col-xs-12' style='height:600px'>
-                    <gs-diagram grid-width='20' grid-height='20' show-grid='true'>
-                        <gs-node ng-repeat='node in vm.nodes' type='{{node.type}}' key='{{node.key}}' props='node.props'></gs-node>
-                    </gs-diagram>
+                    <go-diagram grid-width='20' grid-height='20' show-grid='true'>
+                        <go-node ng-repeat='node in vm.nodes' type='{{node.type}}' key='{{node.key}}' props='node.props'></go-node>
+                    </go-diagram>
                 </div>
             </div>
         </div>
