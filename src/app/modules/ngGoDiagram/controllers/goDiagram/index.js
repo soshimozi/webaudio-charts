@@ -70,7 +70,7 @@ export default class {
                      [goJsTemplate.getPort("INA", true), goJsTemplate.getPort("INB", true)],
                      [goJsTemplate.getPort("OUT", false)], this.handleChangeRequest));
                      
-        $scope.diagram.nodeTemplateMap.add("OUTPUT", goJsTemplate.getParameterTemplate("OUTPUT", "build/images/volume-high.png", colors.blue, colors.gray,
+        $scope.diagram.nodeTemplateMap.add("OUTPUT", goJsTemplate.getParameterTemplate("OUTPUT", require("../../images/volume-high.png"), colors.blue, colors.gray,
                              [goJsTemplate.getPort("IN", true)],
                              [], this.handleChangeRequest, true));
                 
