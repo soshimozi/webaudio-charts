@@ -11,6 +11,13 @@
     },
     "sourceType": "module"
   },
+  "globals": {
+    "underscore": true,
+    "_": true,
+    "angular": true,
+    "moment": true,
+    "$": true
+  },
   "rules": {
     "no-const-assign": "warn",
     "no-this-before-super": "warn",

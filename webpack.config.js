@@ -1,30 +1,26 @@
+const path = require('path');
+const webpack = require('webpack');
 
-import path from 'path';
-import webpack from 'webpack';
-
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import ngAnnotatePlugin from 'ng-annotate-webpack-plugin';
+const ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-const extractLess = new ExtractTextPlugin({
-    filename: "[name].[contenthash].css",
-    disable: process.env.NODE_ENV === "development"
-});
-
-export default function(env, argv) {
+const config = function(env, argv) {
     return {
-        context: path.resolve(__dirname, 'src/app'),
-        entry: './index.js',
+        context: path.join(__dirname, 'src'),
+        entry: {
+            app: './index.js',
+            'production-dependencies' : ['angular', 'jquery', 'underscore']
+        },
         output: {
-            filename: 'bundle.js',
-            path: path.resolve(__dirname, './dist/www')
+            filename: 'app.bundle.js',
+            path: path.join(__dirname, 'build', 'www')
         },
         resolve: {
-            extensions: ['.js', '.css', '.html']
+            extensions: ['.js', '.css', '.html', '.png']
         },
-        devtool: env.production ? 'source-maps' : 'eval',
+        devtool: (env && env.production) ? 'source-maps' : 'eval',
         module: {
             rules: [
                 {
@@ -67,23 +63,30 @@ export default function(env, argv) {
         },
         plugins: [
             new webpack.ProvidePlugin({
-                $: "jquery",
-                jQuery: "jquery",
-                underscore: 'underscore'
+                $: 'jquery',
+                jQuery: 'jquery',
+                underscore: 'underscore',
+                '_': 'underscore',
+                'moment': 'moment',
+                'window.jQuery': 'jquery'
             }),
             new ngAnnotatePlugin({
                 add: true,
                 // other ng-annotate options here
             }),
             new CopyWebpackPlugin([
-                // {output}/to/directory/file.txt
-                { from: '../index.html' }
-
-            ], {
-                copyUnmodified: true
+                { from: './index.html' }
+            ]),
+            new ExtractTextPlugin({
+                filename: "[name].[contenthash].css",
+                disable: !(env && env.production)
             }),
-            extractLess
+            new webpack.optimize.CommonsChunkPlugin({
+                name: 'production-dependencies',
+                filename: 'production-dependencies.bundle.js'
+            })
         ]
     }
 };
 
+module.exports = config;

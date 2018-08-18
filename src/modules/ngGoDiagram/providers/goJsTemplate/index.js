@@ -33,15 +33,6 @@ function goJsTemplate() {
                   },
                   new goJs.Binding("text", "freq").makeTwoWay()),
                 goJs.GraphObject.make(goJs.TextBlock, {
-                      row: 3,
-                      margin: 3,
-                      editable: false,
-                      maxSize: new goJs.Size(80, 40),
-                      stroke: "white",
-                      font: "bold 9pt Arial"
-                  },
-                  new goJs.Binding("text", "detune").makeTwoWay()),
-                goJs.GraphObject.make(goJs.TextBlock, {
                       row: 4,
                       margin: 3,
                       editable: true,
@@ -55,26 +46,26 @@ function goJsTemplate() {
             goJs.GraphObject.make(goJs.Panel, "Vertical", {
                   alignment: goJs.Spot.Left,
                   alignmentFocus: new goJs.Spot(0, 0.5, -8, 0)
-              }, [makePort("FREQ", true), makePort("TREM", true)]),
+              }, [makePort("FM", true)]),
             goJs.GraphObject.make(goJs.Panel, "Vertical", {
                   alignment: goJs.Spot.Right,
                   alignmentFocus: new goJs.Spot(1, 0.5, 8, 0)
               }, [makePort("OUT", false)])
           );
 
-        node.selectionAdornmentTemplate = goJs.GraphObject.make(goJs.Adornment, "Spot",
-            goJs.GraphObject.make(goJs.Panel, "Auto",
-                goJs.GraphObject.make(goJs.Shape, { 
-                        stroke: "dodgerblue", 
-                        strokeWidth: 2, 
-                        fill: null}),
-                goJs.GraphObject.make(goJs.Placeholder)),
-            goJs.GraphObject.make(goJs.Panel, "Horizontal", { alignment: goJs.Spot.Top, alignmentFocus: goJs.Spot.Bottom },
-                goJs.GraphObject.make("Button", { click: changeHandler  },
-                    goJs.GraphObject.make(goJs.TextBlock, { text: "Change Props" })
-                )
-            )
-        );
+        // node.selectionAdornmentTemplate = goJs.GraphObject.make(goJs.Adornment, "Spot",
+        //     goJs.GraphObject.make(goJs.Panel, "Auto",
+        //         goJs.GraphObject.make(goJs.Shape, { 
+        //                 stroke: "dodgerblue", 
+        //                 strokeWidth: 2, 
+        //                 fill: null}),
+        //         goJs.GraphObject.make(goJs.Placeholder)),
+        //     goJs.GraphObject.make(goJs.Panel, "Horizontal", { alignment: goJs.Spot.Top, alignmentFocus: goJs.Spot.Bottom },
+        //         goJs.GraphObject.make("Button", { click: changeHandler  },
+        //             goJs.GraphObject.make(goJs.TextBlock, { text: "Change Props" })
+        //         )
+        //     )
+        // );
         
         return node;
     }

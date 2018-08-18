@@ -1,4 +1,5 @@
 export default class {
+
     constructor() {
         this.filterProps = {
             cutoff : '100',
@@ -7,7 +8,7 @@ export default class {
         };
         
         this.nodes = [
-            { name: 'OSC1', key:'OSC1', type: 'oscillator', props: { freq: 200, detune: -1 } }
+            { name: 'OSC1', key:'OSC1', type: 'oscillator', props: { freq: 200 } }
         ];
         
     }
